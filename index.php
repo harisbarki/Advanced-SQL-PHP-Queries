@@ -17,9 +17,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <style type="text/css">
 	body {
@@ -68,7 +65,7 @@
 </style> 
 
 <?php  
-include('db_connect.php'); 
+// include('helperdb_connect.php'); 
 ?>
 
 </head>
@@ -76,7 +73,7 @@ include('db_connect.php');
 
 	<!-- Loading image div start -->
 	<div id='loading' style='background-color:rgba(211, 211, 211, 0.5); position: absolute; width: 100%; height: 100%; z-index: 10000;' hidden>
-		<img src="loading.gif" alt="Loading" style="width:300px; height:300px; position: absolute; top: 20%; left:40%;">
+		<img src="assets/loading.gif" alt="Loading" style="width:300px; height:300px; position: absolute; top: 20%; left:40%;">
 	</div>
 	<!-- Loading image div end -->
 
@@ -269,67 +266,44 @@ include('db_connect.php');
 		// 2a search function
 		$("#aSearch").click(function(event) {
 			event.preventDefault();
-			$("#aResultContainer").hide();
-			$("#loading").show();
-			var data = $('#aSearchForm').serialize();
-			console.log('data', data);
-			$.get('aResult.php', data).done(function(resp){
-				$("#loading").hide();
-				$("#aResultContainer").html(resp).fadeIn();
-			});
+			getResults("aResultContainer", "aSearchForm", "aResult");
 		});
 
 		// 2b search function
 		$("#bSearch").click(function(event) {
 			event.preventDefault();
-			$("#bResultContainer").hide();
-			$("#loading").show();
-			var data = $('#bSearchForm').serialize();
-			console.log('data', data);
-			$.get('bResult.php', data).done(function(resp){
-				$("#loading").hide();
-				$("#bResultContainer").html(resp).fadeIn();
-			});
+			getResults("bResultContainer", "bSearchForm", "bResult");
 		});
 
 		// 2c search function
 		$("#cSearch").click(function(event) {
 			event.preventDefault();
-			$("#cResultContainer").hide();
-			$("#loading").show();
-			var data = $('#cSearchForm').serialize();
-			console.log('data', data);
-			$.get('cResult.php', data).done(function(resp){
-				$("#loading").hide();
-				$("#cResultContainer").html(resp).fadeIn();
-			});
+			getResults("cResultContainer", "cSearchForm", "cResult");
 		});
 
 		// 2d search function
 		$("#dSearch").click(function(event) {
 			event.preventDefault();
-			$("#dResultContainer").hide();
-			$("#loading").show();
-			var data = $('#dSearchForm').serialize();
-			console.log('data', data);
-			$.get('dResult.php', data).done(function(resp){
-				$("#loading").hide();
-				$("#dResultContainer").html(resp).fadeIn();
-			});
+			getResults("dResultContainer", "dSearchForm", "dResult");
 		});
 
 		// 2e search function
 		$("#eSearch").click(function(event) {
 			event.preventDefault();
-			$("#eResultContainer").hide();
-			$("#loading").show();
-			var data = $('#eSearchForm').serialize();
-			console.log('data', data);
-			$.get('eResult.php', data).done(function(resp){
-				$("#loading").hide();
-				$("#eResultContainer").html(resp).fadeIn();
-			});
+			getResults("eResultContainer", "eSearchForm", "eResult");			
 		});
+		
+		// Function to retreive the data from the query
+		var getResults = function(containerName, formName, fileName) {
+			$("#" + containerName).hide();
+			$("#loading").show();
+			var data = $('#' + formName).serialize();
+			console.log('data', data);
+			$.get("helper-files/" + fileName + ".php", data).done(function(resp){
+				$("#loading").hide();
+				$("#" + containerName).html(resp).fadeIn();
+			});
+		}
 
 </script>
 

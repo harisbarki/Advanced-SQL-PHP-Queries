@@ -90,6 +90,18 @@ include('db_connect.php');
 	</div>
 	<!-- Header End -->
 
+	<div class="container">
+		<h4>Database Schema</h4>
+		<strong>Suppliers </strong>(<u>sid: integer</u>, sname: string, address: string)
+		<br>
+		<strong>Parts </strong>(<u>pid: integer</u>, pname: string, color: string)
+		<br>
+		<strong>Catalog </strong>(<u>sid: integer</u>, <u>pid: integer</u>, <u>cost: real</u>)
+		<br>
+	</div>
+
+	<br>
+
 	<!-- Q2 Part A ____ Start -->
 	<div class="container">
 		<form role="form" id='aSearchForm' action="aResult.php" method="get" class="form-horizontal">

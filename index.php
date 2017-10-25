@@ -229,7 +229,7 @@
 	<div class="container">
 		<form role="form" id='eSearchForm' action="eResult.php" method="get" class="form-horizontal">
 			<h3>Q2 e)</h3>
-			<p>Please enter the address that you are searching for, and the ids and the names of suppliers who do not supply to that address will pop up.</p>
+			<p>Please enter the address that you are searching for, and the ids and the names of suppliers with that address who do not supply any parts will pop up.</p>
 			<div class="row">
 				<div class="col-xs-8 col-sm-4 col-md-4 col-lg-3">
 					<div class="input-group" style="margin-top: 18px">

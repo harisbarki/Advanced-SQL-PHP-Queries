@@ -12,7 +12,11 @@ $address = isset($_GET['address']) ? $_GET['address'] : '';
 
 $query = "SELECT S.sid, S.sname
 FROM Suppliers S
-WHERE S.address!='" . $address . "'";
+WHERE S.address='" . $address . "' AND S.sid NOT IN (
+	SELECT C.sid
+	FROM Catalog C
+	WHERE S.sid=C.sid
+)";
 
 /* For DEBUG purposes, uncomment the following lines */
 // echo $query;
